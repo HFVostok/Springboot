@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notícias</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        article {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 20px;
+        }
+        h2 {
+            margin-top: 0;
+        }
+        p {
+            color: #666;
+        }
+        .newsletter {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .newsletter input[type="email"] {
+            padding: 10px;
+            width: 250px;
+            margin-right: 10px;
+        }
+        .newsletter input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Últimas Notícias</h1>
+    </header>
+    <div class="container">
+        <article>
+            <h2>Título da Notícia 1</h2>
+            <p>Descrição breve da notícia 1. Aqui você pode incluir uma breve descrição do que aconteceu ou do que está sendo relatado.</p>
+            <p>Data da publicação: 06 de março de 2024</p>
+        </article>
+        <article>
+            <h2>Título da Notícia 2</h2>
+            <p>Descrição breve da notícia 2. Mais uma breve descrição do que aconteceu ou do que está sendo relatado.</p>
+            <p>Data da publicação: 06 de março de 2024</p>
+        </article>
+        <article>
+            <h2>Título da Notícia 3</h2>
+            <p>Descrição breve da notícia 3. Aqui vai outra breve descrição do que aconteceu ou do que está sendo relatado.</p>
+            <p>Data da publicação: 06 de março de 2024</p>
+        </article>
+        <div class="newsletter">
+            <h2>Inscreva-se em nossa Newsletter</h2>
+            <span th:text="${msg}"></span><br>
+            <form method="post" id="newsletter">
+                <input type="email" name="email" placeholder="Digite seu e-mail" required>
+                <input type="submit" value="Inscrever">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
