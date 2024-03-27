@@ -5,11 +5,13 @@ header {
     text-align: center;
 }
 
+
 nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     gap: 20px;
 }
+
 
 nav a {
     color: #fff;
@@ -19,17 +21,7 @@ nav a {
     transition: background-color 0.3s;
 }
 
+
 nav a:hover {
     background-color: #555;
-}
-
-.acesso {
-    display: flex;
-}
-
-body {
-    background-image: url('https://i.pinimg.com/736x/af/db/75/afdb75e37127a33a5fadee36521ebd67.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
 }
