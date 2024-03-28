@@ -4,27 +4,25 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class IndexController {
-     
-    //método
+
     @GetMapping("/")
-    public ModelAndView abrirIndex() {
-        ModelAndView mv = new ModelAndView("index");
+    public String acessoHome() {
         return "index";
     }
+
     @GetMapping("/home")
-    public ModelAndView homeIndex() {
-        ModelAndView mv = new ModelAndView("index");
-        return mv;
+    public String acessoHome2() {
+        return "index";
     }
-    @GetMapping("/login_adm")//endereço da pagina no site
-    public ModelAndView abrirLoginAdm() {
-        ModelAndView mv = new ModelAndView("adm/login_adm");
-        return mv;
+
+    @GetMapping("/login-adm")
+    public String acessoLoginAdm() {
+        return "login/login-adm";
     }
-    @GetMapping("/cad_adm")//endereço da pagina no site
-    public ModelAndView abrirCadAdm() {
-        ModelAndView mv = new ModelAndView("adm/cad_adm");
-        return mv;
+
+    @GetMapping("/cadastro-adm")
+    public String acessoCadastroadm() {
+        return "cadastro/cadastro-adm";
     }
 
 }

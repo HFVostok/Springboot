@@ -1,10 +1,9 @@
-package app_escola.crud_escola.Model;
 
 import java.io.Serializable;
 
+import org.springframework.data.annotation.Id;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 
 @Entity
 public class Administrador implements Serializable{
@@ -15,10 +14,8 @@ public class Administrador implements Serializable{
     private String email;
     private String senha;
 
-    
     //métodos
-
-    public String getCpf() {
+    public String setCpf(){
         return cpf;
     }
     public void setCpf(String cpf) {
@@ -42,8 +39,6 @@ public class Administrador implements Serializable{
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
-
     
 
 }

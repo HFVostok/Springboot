@@ -3,11 +3,11 @@ package app_escola.crud_escola.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+
 
 import app_escola.crud_escola.Model.*;
 import app_escola.crud_escola.Repository.*;
-import app_escola.*;
+
 
 @Controller
 public class AdministradorController {
