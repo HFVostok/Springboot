@@ -4,6 +4,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import app_escola.crud_escola.Model.Administrador;
 
-public interface AdministradorRepository extends CrudRepository<Administrador, String> {
-    
+public interface AdministradorRepository extends CrudRepository<Administrador, String>{
+    Administrador findByCpf(String cpf);
+    Administrador findBySenha(String senha);
 }
