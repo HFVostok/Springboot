@@ -21,7 +21,7 @@ public class IndexController {
         return "login/login_adm";
     }
     @GetMapping("/cad_adm")
-    public String acessoCadastroAdm() {
+    public String cadastroAdmBD() {
         return "adm/cad_adm";
     }
     
