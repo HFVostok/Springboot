@@ -38,9 +38,7 @@ body {
 .btn-register:hover {
     background-color: #555;
 }
-
-form a {
-text-decoration: none;
-color: #333;
-
+form a{
+    text-decoration: none;
+    color: #333;
 }
