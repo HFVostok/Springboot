@@ -7,65 +7,64 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import webapp.escola_completo.Model.Administrador;
+import webapp.escola_completo.Model.Aluno;
+import webapp.escola_completo.Model.Professor;
 import webapp.escola_completo.Repository.AdministradorRepository;
 import webapp.escola_completo.Repository.VerificaCadastroAdmRepository;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.GetMapping;
 
-
-
-
 @Controller
 public class AdministradorController {
-//atributos
-boolean acessoInternoAdm = false;
+    // atributos
+    boolean acessoInternoAdm = false;
 
     @Autowired
     private AdministradorRepository ar;
 
     @Autowired
     private VerificaCadastroAdmRepository vcar;
-    
-//métodos  
+
+    // métodos
     @PostMapping("cadastrar-adm")
     public ModelAndView cadastroAdmBD(Administrador adm) {
 
-        boolean verificaCpf = vcar.existsById(adm.getCpf()) ;
+        boolean verificaCpf = vcar.existsById(adm.getCpf());
 
         ModelAndView mv = new ModelAndView("login/login-adm");
 
-        if(verificaCpf){
+        if (verificaCpf) {
             ar.save(adm);
             String mensagem = "Cadastro Realizado com sucesso";
             System.out.println(mensagem);
             mv.addObject("msg", mensagem);
             mv.addObject("classe", "verde");
-        }else{
+        } else {
             String mensagem = "Cadastro Não Realizado";
             System.out.println(mensagem);
             mv.addObject("msg", mensagem);
             mv.addObject("classe", "vermelho");
         }
-         
+
         return mv;
     }
 
     @PostMapping("acesso-adm")
     public ModelAndView acessoAdmLogin(@RequestParam String cpf,
-                                       @RequestParam String senha,
-                                       RedirectAttributes attributes) {
-        ModelAndView mv =  new ModelAndView("redirect:/interna-adm");//página interna de acesso
-        
+            @RequestParam String senha,
+            RedirectAttributes attributes) {
+        ModelAndView mv = new ModelAndView("redirect:/interna-adm");// página interna de acesso
+
         boolean acessoCPF = cpf.equals(ar.findByCpf(cpf).getCpf());
         boolean acessoSenha = senha.equals(ar.findByCpf(cpf).getSenha());
-        
-        if(acessoCPF && acessoSenha){
+
+        if (acessoCPF && acessoSenha) {
             String mensagem = "Login Realizado com sucesso";
             System.out.println(mensagem);
             acessoInternoAdm = true;
             mv.addObject("msg", mensagem);
             mv.addObject("classe", "verde");
-        }else{
+        } else {
             String mensagem = "Login Não Efetuado";
             System.out.println(mensagem);
             mv.addObject("msg", mensagem);
@@ -75,21 +74,18 @@ boolean acessoInternoAdm = false;
         return mv;
     }
 
-    
-    // @GetMapping("/interna-adm")
-    // public ModelAndView acessoPageInternaAdm(RedirectAttributes attributes) {
-    //     ModelAndView mv =  new ModelAndView("interna/interna-adm");
-    //     if (acessoInternoAdm) {
-    //         System.out.println("Acesso Permitido");
-    //     } else{
-    //         String mensagem = "Acesso não Permitido - faça Login";
-    //         System.out.println(mensagem);
-    //         mv.setViewName("redirect:/login-adm");
-    //         mv.addObject("msg", mensagem);
-    //         mv.addObject("classe", "vermelho"); 
-    //     }
+    // @PostMapping("/cadastrar-aluno")
+    // public ModelAndView cadastrarAluno(Aluno aluno) {
+    //     // Lógica para salvar o aluno no banco de dados
+    //     // Utilize o AlunoRepository para salvar o aluno
+    //     // Adicione mensagens de sucesso ou erro conforme necessário
+    // }
 
-    //     return mv;
+    // @PostMapping("/cadastrar-professor")
+    // public ModelAndView cadastrarProfessor(Professor professor) {
+    //     // Lógica para salvar o professor no banco de dados
+    //     // Utilize o ProfessorRepository para salvar o professor
+    //     // Adicione mensagens de sucesso ou erro conforme necessário
     // }
 
     @GetMapping("/interna-adm")
@@ -100,17 +96,15 @@ boolean acessoInternoAdm = false;
             System.out.println("Acesso Permitido");
             acesso = "interna/interna-adm";
 
-        } else{
+        } else {
             String mensagem = "Acesso não Permitido - faça Login";
             System.out.println(mensagem);
             acesso = "login/login-adm";
             mv.addObject("msg", mensagem);
-            mv.addObject("classe", "vermelho"); 
+            mv.addObject("classe", "vermelho");
         }
 
         return acesso;
     }
-    
-    
-    
+
 }
