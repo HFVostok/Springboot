@@ -2,8 +2,13 @@ package webapp.escola_completo.Model;
 
 import java.io.Serializable;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import webapp.escola_completo.Repository.AdministradorRepository;
+import webapp.escola_completo.Repository.AlunoRepository;
+import webapp.escola_completo.Repository.ProfessorRepository;
 
 @Entity
 public class Professor implements Serializable {
@@ -86,4 +91,9 @@ public class Professor implements Serializable {
     public void setMateriaLecionada(String materiaLecionada) {
         this.materiaLecionada = materiaLecionada;
     }
+
+
+
+
+
 }

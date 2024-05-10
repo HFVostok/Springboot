@@ -2,8 +2,13 @@ package webapp.escola_completo.Model;
 
 import java.io.Serializable;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import webapp.escola_completo.Repository.AdministradorRepository;
+import webapp.escola_completo.Repository.AlunoRepository;
+import webapp.escola_completo.Repository.ProfessorRepository;
 
 @Entity
 public class Administrador implements Serializable{
@@ -39,4 +44,31 @@ public class Administrador implements Serializable{
         this.senha = senha;
     }
     
+
+// Em algum serviço
+public class UserService {
+    @Autowired
+    private AdministradorRepository administradorRepository;
+
+    @Autowired
+    private AlunoRepository alunoRepository;
+
+    @Autowired
+    private ProfessorRepository professorRepository;
+
+    public String verificarTipoUsuario(String cpf, String senha) {
+        if (administradorRepository.findByCpf(cpf) != null) {
+            return "ADM";
+        } else if (alunoRepository.findByCpfAndSenha(cpf, senha) != null) {
+            return "ALUNO";
+        } else if (professorRepository.findByCpfAndSenha(cpf, senha) != null) {
+            return "PROFESSOR";
+        } else {
+            return "INVALIDO";
+        }
+    }
+}
+
+
+
 }
